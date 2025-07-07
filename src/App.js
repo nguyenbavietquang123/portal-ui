@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScopeConsent from "./ScopeConsent/ScopeConsent";
+import HomePage from "./PortalUI/HomePage";
+import PatientInfo from "./PortalUI/PatientInfoUI";
+import EncounterInfo from "./PortalUI/EncounterInfoUI"; 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/consent" element={<ScopeConsent />} />
+        <Route path="/homepage" element={<HomePage />}/>
+        <Route path="/patientinfo" element={<PatientInfo />}/>
+        <Route path="/encounterinfo" element={<EncounterInfo />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
