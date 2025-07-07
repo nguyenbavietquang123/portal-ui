@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userLogout } from "../utils/userLogout";
 const AUTH_SERVER_URL = "http://localhost:8080/realms/quang-fhir-server/protocol/openid-connect";
 const CLIENT_ID = "Portal-Client";
 const CLIENT_SECRET = "Jhhup28xLYAF2vrMiyZ4gsjBKbbPB9ly"; // Skip if public client or use PKCE
@@ -79,7 +80,13 @@ function HomePage() {
         
             localStorage.setItem('access_token', accessToken);
             return <div>
-                <h2 style={{ textAlign: 'center', marginTop: '20%' }}>Welcome to our portal {accessToken} refresh {localStorage.getItem("refresh_token")}</h2>;
+                <button
+                    style={{ margin: 10, padding: "10px 20px", fontSize: "16px" }}
+                    onClick={() => userLogout(accessToken)}
+                >
+                    Log Out
+                </button>
+                <h2 style={{ textAlign: 'center', marginTop: '20%' }}>Welcome to our portal</h2>;
                 <button
                     style={{ margin: 10, padding: "10px 20px", fontSize: "16px" }}
                     onClick={handleRedirectToPatientInfo}
